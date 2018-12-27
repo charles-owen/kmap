@@ -1,0 +1,58 @@
+{
+  "name": "kmap",
+  "version": "1.0.0",
+  "description": "Karnagh Map Editor",
+  "main": "dist/kmap.js",
+  "module": "index.js",
+  "private": false,
+  "scripts": {
+    "build:dev": "npx webpack --config webpack.dev.js",
+    "build:prod": "npx webpack --config webpack.prod.js",
+    "build:both": "npm run build:dev && npm run build:prod",
+    "test": "karma start karma.conf.js",
+    "serve": "webpack-dev-server  --config webpack.dev.js --open",
+    "build:docs": "documentation build src/Kmap/**/*.js --sort-order alpha -f html -o doc/js"
+  },
+  "keywords": [
+    "Education",
+    "Circuits",
+    "Computer Architecture",
+    "Karnagh Maps"
+  ],
+  "author": "Charles B. Owen",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/runtime": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "hoek": "^6.1.2",
+    "html-webpack-include-assets-plugin": "^1.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "jasmine-core": "^3.3.0",
+    "karma": "^2.0.5",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack-with-fast-source-maps": "^1.10.2",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "resolve-url-loader": "^2.3.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.5"
+  },
+  "dependencies": {
+    "classlist-polyfill": "^1.2.0"
+  }
+}

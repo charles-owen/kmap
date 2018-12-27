@@ -1,0 +1,29 @@
+div.kmap-cl-generator {
+  margin: 0 auto;
+
+
+
+  form {
+    max-width: 100%;
+    position: relative;
+  }
+
+  p {
+    position: relative;
+    margin: 0.75em 0;
+    padding-top: 0.25em;
+    text-align: left;
+
+    span {
+      padding-left: 0.5em;
+      font-size: 0.85em;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+
+  }
+}
+

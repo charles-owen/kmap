@@ -1,0 +1,64 @@
+div.kmap-cl-dlg {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+
+  // The mask
+  > div:first-child {
+    position: absolute;
+    background-color: white;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  // The box
+  > div:nth-child(2) {
+    position: relative;
+    top: 50%;
+    opacity: 1;
+    z-index: 10;
+    width: 50%;
+    margin: 0 auto;
+    transform: perspective(1px) translateY(-50%);
+    border: 1px solid black;
+    background: white;
+
+    // Title bar
+    > div:first-child {
+      margin: 0;
+      background: green;
+      color: white;
+      padding: 0.25em;
+      font-size: 1.1em;
+    }
+
+    // Body
+    > div:nth-child(2) {
+      padding: 0.5em;
+
+      p {
+
+      }
+
+    }
+
+    // Controls
+    > div:nth-child(3) {
+      padding: 0.5em;
+      text-align: right;
+
+      button {
+        width: 8em;
+        padding: 0.5em 1em;
+      }
+    }
+  }
+}

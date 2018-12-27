@@ -1,0 +1,24 @@
+div.kmap-cl {
+  position: relative;
+  background: white;
+  margin: 1em auto;
+  max-width: $max-width;
+
+  h3 {
+    border-bottom: 1px solid black;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    margin: 1em 0 0.5em 0
+  }
+
+  button {
+    margin: 0;
+    padding: 0.15em 1em;
+    font-size: .9em;
+    min-width: 6em;
+  }
+
+  td {
+    cursor: pointer;
+  }
+}

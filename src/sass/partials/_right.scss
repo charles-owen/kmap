@@ -1,0 +1,17 @@
+//
+// Right side: the map
+//
+
+div.kmap-cl-work > div:nth-child(2) {
+  position: relative;
+  display: table-cell;
+  padding: 1em 2em 1em 1em;
+  min-width: 25em;
+
+  canvas {
+    background-color: transparent;
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,29 @@
+div.kmap-cl-manual {
+
+  form {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+
+    input[type="text"] {
+      width: 90%;
+      font-size: 0.8em;
+    }
+
+    label {
+      font-size: 0.9em;
+    }
+
+    >div {
+      display: table-cell;
+      min-width: 50%;
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+  }
+}

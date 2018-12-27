@@ -1,0 +1,99 @@
+div.kmap-cl > div > div:nth-child(2) table {
+  background: none;
+  border-collapse: collapse;
+  box-shadow: none;
+  border: 0;
+
+  input {
+    width: 3em;
+    text-align: center;
+  }
+
+  tr {
+    border: 0;
+  }
+
+  th, td {
+    background: white;
+    text-shadow: none;
+    font-weight: normal;
+    color: black;
+    padding: 0.25em;
+    vertical-align: middle;
+  }
+
+  th {
+    border: 0;
+    width: 4em;
+    height: 4em;
+  }
+
+  td {
+    position: relative;
+    border: 1px solid black;
+    width: 4em;
+    height: 4em;
+    vertical-align: middle;
+    text-align: center;
+
+    span.minterm {
+      position: absolute;
+      top: 0.15em;
+      left: 0.25em;
+      font-size: 0.75em;
+    }
+  }
+
+  td.kmap-cl-selected {
+    background: yellow;
+  }
+
+  tr:first-child {
+
+    th:not(:first-child) {
+      text-align: center;
+      vertical-align: bottom;
+    }
+
+    th:first-child {
+      border: 0;
+      position: relative;
+
+      .kmap-cl-left {
+        position: absolute;
+        bottom: 0;
+        right: 1.5em;
+      }
+
+      .kmap-cl-right {
+        position: absolute;
+        bottom: 1.5em;
+        right: 0;
+      }
+
+      .kmap-cl-line {
+        width: 4em;
+        height: 1px;
+        background-color: transparent;
+        border-bottom: 1px solid black;
+        -webkit-transform:
+                translate(2em)
+                rotate(45deg)
+                translate(-2em);
+        transform:
+                translate(2em)
+                rotate(45deg)
+                translate(-2em);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  tr:not(:first-child) {
+    th {
+      text-align: right;
+    }
+  }
+}
