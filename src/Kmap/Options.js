@@ -19,7 +19,7 @@ export const Options = function(options) {
 	}
 
     /// The input size: 2, 3, or 4
-	this.size = 2;
+	this.size = 4;
 
 	/// The minterms. Set to integers starting at 0
 	this.minterms = []; // [1, 2, 7, 8, 9, 14];
@@ -31,7 +31,10 @@ export const Options = function(options) {
 	this.labels = ['A', 'B', 'C', 'D'];
 
 	/// Generate don't care maps
-	this.gendontcare = false;
+	this.genDontCare = false;
+
+	/// Are don't cares an option for the generator?
+	this.genDontCareOption = true;
 
 	//
 	// User interface sections
@@ -41,7 +44,7 @@ export const Options = function(options) {
 	this.generator = true;
 
 	/// Include the manual data entry section?
-	this.manual = true;
+	this.manual = false;
 
 	/// Include the map?
 	this.map = true;
@@ -51,6 +54,11 @@ export const Options = function(options) {
 
 
 
+	/// If set true, practice generate features are disabled
+	this.fixed = false;
+
+	/// Verbose answers on mistakes
+	this.verbose = true;
 
 	/// If true, the minterm name appears in each cell.
 	this.labelMinterms = true;
@@ -59,17 +67,23 @@ export const Options = function(options) {
 	/// such as zeros.
 	this.strict = true;
 
-	/// If set true, practice generate features are disabled
-	this.fixed = false;
+
 
 	/// If true, the header Karnaugh Map is included with an option to hide the map
 	this.mapHeading = true;
 
-	/// Verbose answers on mistakes
-	this.verbose = true;
+	/// A results selector. Selector that will be set to the success value
+	/// if the expression successfully checks
+	this.resultSel = null;
+
+	/// Value resultsSel will be set to if check is successful ('fail' otherwise)
+	this.success = 'success';
+
+	/// Selector that will be set to the expression each time check is pressed.
+	this.expressionSel = null;
 
 	/// Is the solve button provided?
-	this.solve = true;
+	this.solve = false;
 
     for(var property in options) {
         if(options.hasOwnProperty(property)) {

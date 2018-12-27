@@ -1,6 +1,5 @@
 div.kmap-cl {
   position: relative;
-  background: white;
   margin: 1em auto;
   max-width: $max-width;
 
@@ -8,7 +7,8 @@ div.kmap-cl {
     border-bottom: 1px solid black;
     font-size: 1.2em;
     font-family: sans-serif;
-    margin: 1em 0 0.5em 0
+    margin: 1em 0 0.5em 0;
+    text-align: left !important;
   }
 
   button {

@@ -1808,7 +1808,7 @@ var Generator = function Generator(main, element) {
   this.generate = function () {
     this.minterms.size = this.main.options.size;
 
-    if (this.main.options.gendontcare) {
+    if (this.main.options.genDontCare) {
       var dcMax = 8;
 
       switch (this.main.options.size) {
@@ -3000,7 +3000,7 @@ var Options = function Options(options) {
 
   this.labels = ['A', 'B', 'C', 'D']; /// Generate don't care maps
 
-  this.gendontcare = false; //
+  this.genDontCare = false; //
   // User interface sections
   //
   /// Include the generator?

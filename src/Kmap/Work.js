@@ -9,6 +9,9 @@ import {Groups} from './Groups';
  */
 export const Work = function(main, element) {
 
+	this.map = null;
+	this.groups = null;
+
 	let div, left, right;
 
 	this.initialize = function() {
@@ -57,6 +60,10 @@ export const Work = function(main, element) {
 		//
 		// Add the Kmap
 		//
+		if(this.map !== null) {
+			this.map.destroy();
+		}
+
 		this.map = new Map(main, right);
 
 		//

@@ -1,4 +1,5 @@
-div.kmap-cl > div > div:nth-child(2) table {
+// div.kmap-cl > div > div:nth-child(2)
+table.kmap-cl {
   background: none;
   border-collapse: collapse;
   box-shadow: none;
@@ -11,6 +12,7 @@ div.kmap-cl > div > div:nth-child(2) table {
 
   tr {
     border: 0;
+    vertical-align: middle;
   }
 
   th, td {
@@ -22,7 +24,7 @@ div.kmap-cl > div > div:nth-child(2) table {
     vertical-align: middle;
   }
 
-  th {
+  tr th {
     border: 0;
     width: 4em;
     height: 4em;
@@ -49,6 +51,16 @@ div.kmap-cl > div > div:nth-child(2) table {
   }
 
   tr:first-child {
+    th {
+      color: black;
+      background: white;
+      text-shadow: none;
+      border: 0;
+      font-weight: normal;
+      padding: 0.25em;
+      font-family: $font;
+      text-decoration: none;
+    }
 
     th:not(:first-child) {
       text-align: center;

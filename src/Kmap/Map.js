@@ -15,7 +15,7 @@ export const Map = function(main, element) {
 
     const initialize = () => {
         let table = document.createElement('table');
-        table.classList.add('kmap');
+        table.classList.add('kmap-cl');
         element.appendChild(table);
 
         // Make a local copy of the labels, converting
@@ -93,17 +93,26 @@ export const Map = function(main, element) {
         canvas.setAttribute('height', '1000');
         this.canvas = canvas;
 
-        window.addEventListener('resize', () => {
-        	set_canvas();
-        });
+        canvas.addEventListener('resize', () => {
+        	console.log('resize');
+	    });
 
         element.appendChild(canvas);
 
-        set_canvas();
+        setTimeout(() => {
+	        set_canvas();
+        }, 0);
+
+
+	    window.addEventListener('resize', set_canvas);
     }
 
     this.get_canvas = function() {
         return this.canvas;
+    }
+
+    this.destroy = function() {
+    	window.removeEventListener('resize', set_canvas);
     }
 
     function set_canvas() {
@@ -154,7 +163,8 @@ export const Map = function(main, element) {
 
             if(td.classList.contains("kmap-cl-selected")) {
                 td.classList.remove("kmap-cl-selected");
-                if(is_selected(minterm)) {
+                let n = this.selected.indexOf(minterm);
+                if(n > -1) {
                     this.selected.splice(n, 1);
                 }
             } else {

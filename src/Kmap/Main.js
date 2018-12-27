@@ -2,6 +2,7 @@ import {Work} from './Work';
 import {Generator} from './Generator';
 import {Solution} from "./Solution";
 import {Manual} from "./Manual";
+import {Minterms} from "../Logic/Minterms";
 
 /**
  * Main window management object
@@ -16,16 +17,17 @@ export const Main = function(kmap, element) {
     element.innerHTML = '';
     element.classList.add('kmap-cl');
 
-    this.element = element;
+    // The current minterms
+	this.minterms = new Minterms();
 
-    this.work = null;
+	this.work = null;
     this.generator = null;
     this.solution = null;
     this.manual = null;
 
     this.initialize = () => {
         if(this.options.generator) {
-            this.generator = new Generator(this, element);
+	        this.generator = new Generator(this, element);
         }
 
         if(this.options.manual) {
@@ -41,16 +43,45 @@ export const Main = function(kmap, element) {
         }
 
 	    // Generate initial minterms
-	    if(this.generator !== null) {
-		    if(this.options.minterms.length === 0) {
-			    this.generator.generate();
-		    } else {
-			    this.generator.set(this.config.minterms);
-		    }
+	    if(this.options.minterms.length === 0) {
+		    this.generate();
+	    } else {
+		    this.set(this.config.minterms);
 	    }
     }
 
-	this.newMinterms = function(minterms) {
+	/**
+	 * Generate a new set of minterms with optional don't cares
+	 */
+	this.generate = function() {
+		this.minterms.size = this.options.size;
+		if(this.options.genDontCare) {
+			var dcMax = 8;
+			switch(this.options.size) {
+				case 2:
+					dcMax = 2;
+					break;
+
+				case 3:
+					dcMax = 4;
+					break;
+			}
+			this.minterms.generate_bounded(0.5, 1, Math.pow(2, this.options.size)-1,
+				0.2, 1, dcMax);
+
+			newMinterms(this.minterms);
+		} else {
+			this.minterms.generate_bounded(0.5, 1, Math.pow(2, this.options.size)-1);
+			newMinterms(this.minterms);
+		}
+	}
+
+	this.set = function(minterms, dontcare) {
+		this.minterms.set_from(minterms, dontcare);
+		newMinterms(this.minterms);
+	}
+
+	const newMinterms = (minterms) => {
 		if(this.solution !== null) {
 			this.solution.clear();
 		}
@@ -61,14 +92,16 @@ export const Main = function(kmap, element) {
 		if(this.work !== null) {
 			this.work.render();
 		}
+
+		if(this.generator !== null) {
+			this.generator.refresh();
+		}
 	}
 
 
 	this.newSize = function(size) {
 		this.options.size = size;
-		if(this.generator !== null) {
-			this.generator.generate();
-		}
+		this.generate();
 	}
 
     this.initialize();

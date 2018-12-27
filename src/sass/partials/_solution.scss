@@ -23,7 +23,10 @@ div.kmap-cl-solution {
 
   // Results div
   >div {
-    text-align: center;
-    font-size: 1.1em;
+
+    p {
+      font-size: 1.1em;
+      text-align: center;
+    }
   }
 }

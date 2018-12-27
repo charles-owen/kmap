@@ -113,6 +113,13 @@ export const Solution = function(main, element) {
 
 	    let str = expressionInput.value;
 
+	    if(main.options.expressionSel !== null) {
+		    const elements = document.querySelectorAll(main.options.expressionSel);
+		    for(let element of elements) {
+			    element.value = str.replace(/(<([^>]+)>)/ig,"");
+		    }
+	    }
+
 	    try {
 		    expression.parse(str);
 	    } catch(msg) {
@@ -229,6 +236,13 @@ export const Solution = function(main, element) {
 	    //
 
 	    result.innerHTML = '<p>Your expression is correct and minimal.</p>';
+
+	    if(main.options.resultSel !== null) {
+	    	const elements = document.querySelectorAll(main.options.resultSel);
+	    	for(let element of elements) {
+	    		element.value = main.options.success;
+		    }
+	    }
     }
 
     this.solve = function() {
@@ -253,8 +267,15 @@ export const Solution = function(main, element) {
 	    groups.drawGroups();
     }
 
-	function fail(msg) {
+	const fail = (msg) => {
 		result.innerHTML = msg;
+
+		if(main.options.resultSel !== null) {
+			const elements = document.querySelectorAll(main.options.resultSel);
+			for(let element of elements) {
+				element.value = 'fail';
+			}
+		}
 	}
 
 
