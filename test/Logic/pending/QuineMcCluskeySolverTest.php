@@ -1,6 +1,6 @@
 <?php
-require_once "../../../lib/course.inc.php";
-$view = new View($course, $user);
+require_once "../../../site.php";
+$view = new \CL\Course\View($site);
 $view->set_title('QuineMcCluskeySolver Test');
 
 $cirsimRoot = $course->get_root() . '/cirsim';
@@ -12,9 +12,9 @@ $view->add_qunit();
 $view->add_rel_js('qunit-assert-close.js');
 ?>
 <!doctype html>
-<html lang=en-US>
+<html lang="en-US">
 <head>
-	<link href="../../../lib/course.css" type="text/css" rel="stylesheet" />
+	<link href="../../../cl/course.css" type="text/css" rel="stylesheet" />
 	<?php echo $view->head(); ?>
 </head>
 <body>
@@ -72,7 +72,7 @@ QUnit.test("Solver", function(assert) {
 </script>
 
 <?php
-echo $view->tail();
+echo $view->footer();
 ?>
 
 </body>
