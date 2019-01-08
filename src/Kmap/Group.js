@@ -7,8 +7,6 @@
  * @constructor
  */
 export const Group = function(groups, list, selected, color) {
-    var that = this;
-
     this.groups = groups;
     this.selected = selected;
     this.color = color;
@@ -61,10 +59,10 @@ export const Group = function(groups, list, selected, color) {
 }
 
 Group.prototype.draw = function(ctx, wid, hit, insetDepth) {
-    var inset = 15;
-    var spacing = 10;
+    let inset = 15;
+    let spacing = 10;
 
-    var cols, rows, mapR, mapC, max;
+    let cols, rows, mapR, mapC, max;
     switch(this.groups.main.options.size) {
         case 2:
             cols = 2;
@@ -91,19 +89,18 @@ Group.prototype.draw = function(ctx, wid, hit, insetDepth) {
             break;
     }
 
-    var cnt = this.selected.length;
-    if(cnt == max) {
+    let cnt = this.selected.length;
+    if(cnt === max) {
         // We are wrapping the whole thing
         this.drawGroup(ctx, 0, 0, wid, hit, inset + spacing * insetDepth);
         return;
     }
 
-    if(cnt == 1) {
+    if(cnt === 1) {
         var c1 = mapC[this.selected[0]];
         var r1 = mapR[this.selected[0]];
         this.drawGroup(ctx, c1 * wid / cols, r1 * hit / rows,
             wid / cols, hit / rows, inset + spacing * insetDepth);
-
     } else if(cnt == 2) {
         var c1 = mapC[this.selected[0]];
         var r1 = mapR[this.selected[0]];

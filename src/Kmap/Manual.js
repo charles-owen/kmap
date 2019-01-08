@@ -110,7 +110,7 @@ export const Manual = function(main, element) {
 		    const labels = manualVariables.value.replace(/(<([^>]+)>)/ig,"");
 
 		    main.options.labels = labels.split(",");
-		    main.generator.set(mintermslist, dontcarelist);
+		    main.set(mintermslist, dontcarelist);
         });
     }
 

@@ -9,7 +9,6 @@
  * @constructor
  */
 export const MessageDialog = function(main, title, body) {
-
     let div = null;
 
     this.open = function() {

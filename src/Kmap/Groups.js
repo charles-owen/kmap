@@ -13,12 +13,6 @@ export const Groups = function(main, sel) {
 	let list;
 
 	const initialize = () => {
-		// var button = $("<button>Cover</button>");
-		// $(sel).append(button);
-		//
-		// var list = $('<div class="list"></div>');
-		// $(sel).append(list);
-
 		let button = document.createElement('button');
 		sel.appendChild(button);
 		button.innerText = 'Cover';
@@ -31,6 +25,7 @@ export const Groups = function(main, sel) {
 		this.colorN = 0;
 
 		button.addEventListener('click', (event) => {
+			console.log(main);
 		    event.preventDefault();
 
 			let selected = main.work.map.selected;
@@ -51,7 +46,7 @@ export const Groups = function(main, sel) {
 				let size = main.options.size;
 
 				for(let i=0; i<size; i++) {
-					if((or & 1) == 1) {
+					if((or & 1) === 1) {
 						bits++;
 					}
 
@@ -143,13 +138,14 @@ export const Groups = function(main, sel) {
 	/**
 	 * Draw all of the groups on the canvas
 	 */
-	Groups.prototype.drawGroups = function() {
-		var canvas = main.work.map.get_canvas();
-		var c = canvas;
-		var ctx = c.getContext("2d");
+	this.drawGroups = function() {
+		console.log(main);
+		const canvas = main.work.map.get_canvas();
+		console.log(canvas);
+		var ctx = canvas.getContext("2d");
 
-		var wid = c.width;
-		var hit = c.height;
+		var wid = canvas.width;
+		var hit = canvas.height;
 
 		ctx.clearRect(0, 0, wid, hit);
 

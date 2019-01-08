@@ -93,10 +93,6 @@ export const Map = function(main, element) {
         canvas.setAttribute('height', '1000');
         this.canvas = canvas;
 
-        canvas.addEventListener('resize', () => {
-        	console.log('resize');
-	    });
-
         element.appendChild(canvas);
 
         setTimeout(() => {
@@ -108,6 +104,7 @@ export const Map = function(main, element) {
     }
 
     this.get_canvas = function() {
+    	console.log(this);
         return this.canvas;
     }
 

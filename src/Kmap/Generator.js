@@ -99,7 +99,7 @@ export const Generator = function(main, element) {
 	this.refresh = function() {
     	if(main.minterms.dontcare.length > 0) {
 		    mintermsSpan.innerHTML = main.minterms.list(true) +
-		     	"<br>X=" + this.minterms.list_dontcare(true);
+		     	"<br>X=" + main.minterms.list_dontcare(true);
 	    } else {
 		    mintermsSpan.innerHTML = main.minterms.list(true);
 	    }
@@ -137,17 +137,7 @@ export const Generator = function(main, element) {
 	// 	    main.newMinterms(this.minterms);
 	//     }
     // }
-	//
-	//
-	// this.set = function(minterms, dontcare) {
-	// 	this.minterms.set_from(minterms, dontcare);
-	// 	if(this.minterms.dontcare.length > 0) {
-	// 		mintermsSpan.innerHTML = this.minterms.list(true) + "<br>X=" + this.minterms.list_dontcare(true);
-	// 	} else {
-	// 		mintermsSpan.innerHTML = this.minterms.list(true);
-	// 	}
-	//
-	// 	main.newMinterms(this.minterms);
-	// }
+
+
 }
 

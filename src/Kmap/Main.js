@@ -12,6 +12,7 @@ import {Minterms} from "../Logic/Minterms";
  */
 export const Main = function(kmap, element) {
     this.options = kmap.options;
+    this.element = element;
 
     // Ensure empty and add the kmap-cl class
     element.innerHTML = '';
@@ -46,7 +47,7 @@ export const Main = function(kmap, element) {
 	    if(this.options.minterms.length === 0) {
 		    this.generate();
 	    } else {
-		    this.set(this.config.minterms);
+		    this.set(this.options.minterms, this.options.dontcare);
 	    }
     }
 
@@ -69,25 +70,25 @@ export const Main = function(kmap, element) {
 			this.minterms.generate_bounded(0.5, 1, Math.pow(2, this.options.size)-1,
 				0.2, 1, dcMax);
 
-			newMinterms(this.minterms);
+			newMinterms();
 		} else {
 			this.minterms.generate_bounded(0.5, 1, Math.pow(2, this.options.size)-1);
-			newMinterms(this.minterms);
+			newMinterms();
 		}
 	}
 
 	this.set = function(minterms, dontcare) {
 		this.minterms.set_from(minterms, dontcare);
-		newMinterms(this.minterms);
+		newMinterms();
 	}
 
-	const newMinterms = (minterms) => {
+	const newMinterms = () => {
 		if(this.solution !== null) {
 			this.solution.clear();
 		}
 
-		this.options.minterms = minterms.minterms.slice();
-		this.options.dontcare = minterms.dontcare.slice();
+		this.options.minterms = this.minterms.minterms.slice();
+		this.options.dontcare = this.minterms.dontcare.slice();
 
 		if(this.work !== null) {
 			this.work.render();
