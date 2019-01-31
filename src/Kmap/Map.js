@@ -104,7 +104,6 @@ export const Map = function(main, element) {
     }
 
     this.get_canvas = function() {
-    	console.log(this);
         return this.canvas;
     }
 

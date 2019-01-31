@@ -25,7 +25,6 @@ export const Groups = function(main, sel) {
 		this.colorN = 0;
 
 		button.addEventListener('click', (event) => {
-			console.log(main);
 		    event.preventDefault();
 
 			let selected = main.work.map.selected;
@@ -139,9 +138,7 @@ export const Groups = function(main, sel) {
 	 * Draw all of the groups on the canvas
 	 */
 	this.drawGroups = function() {
-		console.log(main);
 		const canvas = main.work.map.get_canvas();
-		console.log(canvas);
 		var ctx = canvas.getContext("2d");
 
 		var wid = canvas.width;
