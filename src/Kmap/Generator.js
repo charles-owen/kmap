@@ -106,38 +106,5 @@ export const Generator = function(main, element) {
 	}
 
 	initialize();
-
-	// /**
-	//  * Generate a new set of minterms with optional don't cares
-	//  */
-    // this.generate = function() {
-	//     this.minterms.size = main.options.size;
-	//     if(main.options.genDontCare) {
-	// 	    var dcMax = 8;
-	// 	    switch(main.options.size) {
-	// 		    case 2:
-	// 			    dcMax = 2;
-	// 			    break;
-	//
-	// 		    case 3:
-	// 			    dcMax = 4;
-	// 			    break;
-	// 	    }
-	// 	    this.minterms.generate_bounded(0.5, 1, Math.pow(2, main.options.size)-1,
-	// 		    0.2, 1, dcMax);
-	//
-	// 	    mintermsSpan.innerHTML = this.minterms.list(true) +
-	// 		    "<br>X=" + this.minterms.list_dontcare(true);
-	//
-	// 	    main.newMinterms(this.minterms);
-	//     } else {
-	// 	    this.minterms.generate_bounded(0.5, 1, Math.pow(2, main.options.size)-1);
-	//
-	// 	    mintermsSpan.innerHTML = this.minterms.list(true);
-	// 	    main.newMinterms(this.minterms);
-	//     }
-    // }
-
-
 }
 

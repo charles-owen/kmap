@@ -53,6 +53,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "classlist-polyfill": "^1.2.0"
+    "classlist-polyfill": "^1.2.0",
+    "html2canvas": "^1.0.0-alpha.12"
   }
 }

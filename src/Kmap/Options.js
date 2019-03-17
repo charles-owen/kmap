@@ -52,7 +52,8 @@ export const Options = function(options) {
 	/// Include the solution section?
 	this.solution = true;
 
-
+	/// Include the To PNG button
+	this.toPNG = false;
 
 	/// If set true, practice generate features are disabled
 	this.fixed = false;

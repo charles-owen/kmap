@@ -1,6 +1,11 @@
 import {Expression} from "../Logic/Expression";
 import {QuineMcCluskeySolver} from "../Logic/QuineMcCluskeySolver";
 
+import '../Vendor/Blob.js';
+import saveAs from '../Vendor/FileSaver.js';
+
+import html2canvas from 'html2canvas';
+
 /**
  * Practice page solution form
  * @param main Main object
@@ -8,8 +13,6 @@ import {QuineMcCluskeySolver} from "../Logic/QuineMcCluskeySolver";
  * @constructor
  */
 export const Solution = function(main, element) {
-    var that = this;
-
     this.main = main;
 
     // The various section elements
@@ -20,6 +23,7 @@ export const Solution = function(main, element) {
         div.classList.add('kmap-cl-solution');
         element.append(div);
 
+        // Heading
         let h3 = document.createElement('h3');
         h3.innerText = 'Solution';
         div.appendChild(h3);
@@ -27,7 +31,10 @@ export const Solution = function(main, element) {
         let form = document.createElement('form');
         div.appendChild(form);
 
+        //
+        // Enter expression
 	    // '<p><label>Enter Expression<br><input type="text" spellcheck="false" class="expression"></label></p>'
+	    //
 	    let p = document.createElement('p');
 	    form.appendChild(p);
 
@@ -41,7 +48,9 @@ export const Solution = function(main, element) {
 	    expressionInput.setAttribute('spellcheck', 'false');
 	    label.appendChild(expressionInput);
 
-	    // '<p><button class="check">Check</button><a class="clear" href="javascript:;"></a>';
+	    //
+	    // Check button
+	    //
         p = document.createElement('p');
         form.appendChild(p);
 
@@ -55,7 +64,9 @@ export const Solution = function(main, element) {
            this.check();
         });
 
+        //
         // Clear button (input)
+	    //
 	    p.appendChild(document.createTextNode(' '));
 
 	    let clear = document.createElement('a');
@@ -67,10 +78,10 @@ export const Solution = function(main, element) {
 	        this.clear();
         });
 
+	    //
 	    // Optional solve button
+	    //
 	    if(main.options.solve) {
-		    p.appendChild(document.createTextNode(' '));
-
 		    let solve = document.createElement('button');
 		    solve.classList.add('kmap-cl-solve');
 		    solve.innerHTML = 'Solve';
@@ -79,6 +90,21 @@ export const Solution = function(main, element) {
 		    solve.addEventListener('click', (event) => {
 		    	event.preventDefault();
 		    	this.solve();
+		    })
+	    }
+
+	    //
+	    // Optional To PNG button
+	    //
+	    if(main.options.toPNG) {
+		    const toPNG = document.createElement('button');
+		    toPNG.classList.add('kmap-cl-topng');
+		    toPNG.innerHTML = 'To PNG';
+		    p.appendChild(toPNG);
+
+		    toPNG.addEventListener('click', (event) => {
+			    event.preventDefault();
+			    this.toPNG();
 		    })
 	    }
 
@@ -293,6 +319,35 @@ export const Solution = function(main, element) {
 		}
 		qm.compute();
 		return qm;
+	}
+
+	this.toPNG = function() {
+		html2canvas(main.element).then(canvas => {
+			const options = this.main.options;
+
+			let filename = 'k' + options.size;
+			if(main.minterms.dontcare.length > 0) {
+				filename += 'x';
+			}
+
+			filename += '-';
+			for(let term of main.minterms.minterms) {
+				filename += new Number(term).toString(16);
+			}
+
+			if(main.minterms.dontcare.length > 0) {
+				filename += '-';
+				for(let term of main.minterms.dontcare) {
+					filename += new Number(term).toString(16);
+				}
+			}
+
+			filename += '.png';
+
+			canvas.toBlob((blob) => {
+				saveAs(blob, filename);
+			});
+		});
 	}
 
     initialize();

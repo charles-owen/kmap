@@ -11,9 +11,16 @@ div.kmap-cl-solution {
     width: 8em;
   }
 
-  button.kmap-cl-solve {
+  button.kmap-cl-solve{
     display: inline-block;
     float: right;
+  }
+
+
+  button.kmap-cl-topng {
+    display: inline-block;
+    float: right;
+    margin-right: 1em;
   }
 
   input[type="text"] {
