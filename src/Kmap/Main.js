@@ -39,9 +39,7 @@ export const Main = function(kmap, element) {
 	        this.work = new Work(this, element);
         }
 
-        if(this.options.solution) {
-	        this.solution = new Solution(this, element);
-        }
+		this.solution = new Solution(this, element);
 
 	    // Generate initial minterms
 	    if(this.options.minterms.length === 0) {
@@ -49,6 +47,10 @@ export const Main = function(kmap, element) {
 	    } else {
 		    this.set(this.options.minterms, this.options.dontcare);
 	    }
+
+	    if(this.options.solved) {
+	    	this.solution.solve();
+		}
     }
 
 	/**

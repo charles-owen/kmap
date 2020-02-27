@@ -86,6 +86,9 @@ export const Options = function(options) {
 	/// Is the solve button provided?
 	this.solve = false;
 
+	/// Is the problem solved?
+	this.solved = false;
+
     for(var property in options) {
         if(options.hasOwnProperty(property)) {
             if(!this.hasOwnProperty(property)) {

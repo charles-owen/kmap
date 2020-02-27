@@ -16,13 +16,29 @@ export const Solution = function(main, element) {
     this.main = main;
 
     // The various section elements
-    let div, expressionInput, result;
+    let div=null, expressionInput=null, result=null;
 
     const initialize = () => {
-        div = document.createElement('div');
-        div.classList.add('kmap-cl-solution');
-        element.append(div);
+    	// We only create the div is the user wants the solution
+		// interface or is a solution is presented.
+    	if(main.options.solution || main.options.solved) {
+			div = document.createElement('div');
+			div.classList.add('kmap-cl-solution');
+			element.append(div);
 
+			// If a solution is presented, we don't need the interface
+			if(main.options.solution && !main.options.solved) {
+				addDiv();
+			}
+
+			// Results div
+			result = document.createElement('div');
+			div.appendChild(result);
+		}
+	}
+
+	// Add the <div> to main
+	const addDiv = () => {
         // Heading
         let h3 = document.createElement('h3');
         h3.innerText = 'Solution';
@@ -107,16 +123,20 @@ export const Solution = function(main, element) {
 			    this.toPNG();
 		    })
 	    }
-
-	    // Results div
-        result = document.createElement('div');
-        div.appendChild(result);
     }
 
-    this.clear = function() {
-	    expressionInput.value = '';
-	    result.innerHTML = '';
-    }
+	/**
+	 * Clear the map
+	 */
+	this.clear = function() {
+    	if(expressionInput !== null) {
+			expressionInput.value = '';
+		}
+
+    	if(result !== null) {
+			result.innerHTML = '';
+		}
+	}
 
     this.check = function() {
 	    var mt = '';
@@ -273,7 +293,9 @@ export const Solution = function(main, element) {
 
     this.solve = function() {
 	    const qm = this.minimumExpression();
-	    result.innerHTML = '<p class="center">' + qm.expression() + "</p>";
+	    if(result !== null) {
+			result.innerHTML = '<p class="center">' + qm.expression() + "</p>";
+		}
 
 	    main.work.map.clear();
 
