@@ -1,6 +1,6 @@
 {
   "name": "kmap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Karnagh Map Editor",
   "main": "dist/kmap.js",
   "module": "index.js",
