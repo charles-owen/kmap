@@ -19,7 +19,12 @@ module.exports = {
             template: 'src/html/index.html',
             inject: 'head'
         }),
-        new webpack.NamedModulesPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Kmap',
+            filename: 'dom-install.html',
+            template: 'src/html/dom-install.html',
+            inject: 'head'
+        }),
         new webpack.HotModuleReplacementPlugin()
     ], module: {
         rules: [
