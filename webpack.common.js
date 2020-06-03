@@ -41,11 +41,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif)$/i,
-                loader:"file-loader",
-                query:{
-                    name:'[name].[ext]',
-                    outputPath:'img/'
-                }
+                loader:"url-loader"
             },
             {
                 test: /\.scss$/,
@@ -62,13 +58,7 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
-            },
-            // {
-            //     test: /\.(png|svg|jpg|gif)$/,
-            //     use: [
-            //         'file-loader'
-            //     ]
-            // }
+            }
         ]
     }
 };
