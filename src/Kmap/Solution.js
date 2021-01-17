@@ -1,5 +1,7 @@
 import {Expression} from "../Logic/Expression";
 import {QuineMcCluskeySolver} from "../Logic/QuineMcCluskeySolver";
+import {Ajax} from "./Utility/Ajax"
+import {JsonAPI} from "./Utility/JsonAPI";
 
 import '../Vendor/Blob.js';
 import saveAs from '../Vendor/FileSaver.js';
@@ -175,7 +177,6 @@ export const Solution = function(main, element) {
 		    return;
 	    }
 
-
 	    // Is this result minimal?
 	    var qm = new QuineMcCluskeySolver();
 	    qm.labels = main.options.labels;
@@ -289,6 +290,45 @@ export const Solution = function(main, element) {
 	    		element.value = main.options.success;
 		    }
 	    }
+
+	    if(main.options.testAPI !== null) {
+	    	const config = {
+	    		minterms: main.options.minterms,
+				dontcares: main.options.dontcares,
+				answer: expressionInput.value
+			}
+
+			let data = {cmd: "test",
+				result: main.options.success,
+				data: JSON.stringify(config),
+				type: 'application/json'
+			};
+
+			if(main.options.name !== null) {
+				data['name'] = main.options.name;
+			}
+
+			if(main.options.appTag !== null) {
+				data['appTag'] = main.options.appTag;
+			}
+
+			Ajax.do({
+				url: main.options.testAPI,
+				data: data,
+				method: "POST",
+				dataType: 'json',
+				contentType: main.options.contentType,
+				success: (data) => {
+					var json = new JsonAPI(data);
+					result.innerHTML = '<p>Your expression is correct and minimal.<br><em>Test result successfully sent to server.</em></p>';
+				},
+				error: (xhr, status, error) => {
+					// Failure
+					// main.toast.message('Unable to communicate with server: ' + error);
+					result.innerHTML = '<p>Your expression is correct and minimal.<br><em>Unable to communicate with server: ' + error + '</em></p>';
+				}
+			});
+		}
     }
 
     this.solve = function() {

@@ -13,7 +13,8 @@ Ready.go(() => {
     const elements = document.querySelectorAll('div.kmap-cl-install');
     for(let i=0; i<elements.length; i++) {
         let element = elements[i];
-        const json = JSON.parse(element.textContent);
+        element.classList.remove('kmap-cl-install');
+        const json = element.textContent;
         element.innerHTML = '';
         const kmap = new Kmap(element, json);
         kmap.startNow();

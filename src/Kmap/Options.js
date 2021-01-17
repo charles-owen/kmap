@@ -68,8 +68,6 @@ export const Options = function(options) {
 	/// such as zeros.
 	this.strict = true;
 
-
-
 	/// If true, the header Karnaugh Map is included with an option to hide the map
 	this.mapHeading = true;
 
@@ -88,6 +86,18 @@ export const Options = function(options) {
 
 	/// Is the problem solved?
 	this.solved = false;
+
+	/// Optional application tag
+	this.appTag = null;
+
+	/// Optional name for test result
+	this.name = null;
+
+	/// Optional test result API
+	this.testAPI = null;
+
+	/// Content type to send (can be json if required)
+	this.contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
 
     for(var property in options) {
         if(options.hasOwnProperty(property)) {
