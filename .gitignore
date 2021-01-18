@@ -7,6 +7,8 @@ yarn-error.log*
 packages
 
 doc/js
+dist/
+
 
 # Runtime data
 pids
